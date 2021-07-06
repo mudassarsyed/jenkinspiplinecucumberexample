@@ -4,7 +4,7 @@ pipeline {
             stage('Execute')
             {
                 steps {
-                        withMaven(maven: 'Maven 3.5.4') {
+                        withMaven(maven: 'Maven3_5_4') {
                             sh 'mvn test'
                         }
                 }
