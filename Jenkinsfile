@@ -1,21 +1,18 @@
 pipeline {
+
     agent any
     stages {
-            stage('Execute')
-            {
-                steps {
-                        {
-                            sh 'mvn test'
-                        }
-                }
+        stage('Checkout') {
+            steps { //Checking out the repo
+                sh 'gradle test -Dnum.parallels=20'
             }
-            stage('Cucumber Reports')
-             {
-                 steps {
-                         cucumber buildStatus:"UNSTABLE",
-                         fileIncludePattern: "**/cucumber.json",
-                         jsonReportDirectory: "reports/tests/cucumber/json"
-                        }
-             }
+        }
+        stage('Publish Artifact to Nexus') {
+            steps {
+                cucumber buildStatus:"UNSTABLE",
+                fileIncludePattern: "**/cucumber.json",
+                jsonReportDirectory: "reports/tests/cucumber/json"
             }
+        }
     }
+}
