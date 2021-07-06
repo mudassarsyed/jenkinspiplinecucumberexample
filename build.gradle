@@ -40,9 +40,5 @@ tasks.named('test') {
     useTestNG() {
         suites 'src/test/resources/conf/testng.xml'
         parallel = 'methods'
-
-        useDefaultListeners = true
-
-        outputDirectory = file ("")
     }
 }
