@@ -1,7 +1,6 @@
 pipeline {
     agent any
-
-    stages{
+    stages {
             stage('Execute')
             {
                 steps {
@@ -11,14 +10,12 @@ pipeline {
                 }
             }
             stage('Cucumber Reports')
-                        {
-                            steps {
+             {
+                 steps {
                                     cucumber buildStatus:"UNSTABLE"
                                     fileIncludePattern: "**/cucumber.json"
                                     jsonReportDirectory: "reports/tests/cucumber/json"
-                                    }
-                            }
-                        }
+                         }
+             }
+            }
     }
-}
-}
