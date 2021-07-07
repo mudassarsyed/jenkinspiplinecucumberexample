@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps { //Checking out the repo
-                sh 'gradle test -Dnum.parallels=20'
+                sh './gradlew test'
             }
         }
         stage('Publish Artifact to Nexus') {
